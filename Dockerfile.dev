@@ -1,0 +1,13 @@
+# Just for development 
+# see Dockerfile which is used as production is dockerfile
+
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]

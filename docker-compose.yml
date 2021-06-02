@@ -1,0 +1,27 @@
+version: '3'
+services:
+  web:
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Some times ghanges made to our code won't be reflected to our docker linux so us this to solve the problem
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+      # Ignore referencing the nodemodules because there is no node modules
+      # Npm install will generate node modeules inside the docker linux
+      # so referencing it will delete the node_modules created by npm install inside the docker linux
+      - .:/app
+      # reference everything inside . into /app present docker linux
+  tests:
+    stdin_open: true
+    build:
+      context: . # Check for docker file here
+      dockerfile: Dockerfile.dev # The name of the docker file 
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ['npm', 'run', 'test']
