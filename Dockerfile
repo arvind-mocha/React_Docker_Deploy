@@ -5,7 +5,8 @@ WORKDIR '/app'
 COPY package.json .
 RUN npm install
 COPY . .
-RUN npm run build
+RUN npm run build 
+# Built our react
  
 FROM nginx
 COPY --from=0 /app/build /usr/share/nginx/html
