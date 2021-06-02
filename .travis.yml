@@ -19,7 +19,7 @@ deploy:
   bucket_name: "elasticbeanstalk-ap-south-1-167546543537" # AWS s3
   bucket_path: "docker-react"
   on:
-    branch: master # only deploy when merged or pushed to master branch
+    branch: main # only deploy when merged or pushed to master branch
 access_key_id: $AWS_ACCESS_KEY
 secret_access_key:
   secure: "$AWS_SECRET_KEY"
