@@ -2,7 +2,7 @@
 
 FROM node:alpine
 WORKDIR '/app'
-COPY package.json .
+COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build 
@@ -10,7 +10,7 @@ RUN npm run build
  
 FROM nginx
 EXPOSE 80 
-# just a port mapping to docker port to out side port
+# mapping docker nginx port to out side port by exposing the nginx port
 COPY --from=0 /app/build /usr/share/nginx/html
 # nginx tells us to put the build inside the html directory
 # We are just copying the build of react into nginx. These both are inside docker linux.
