@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   web:
     stdin_open: true
@@ -8,20 +8,20 @@ services:
       context: .
       dockerfile: Dockerfile.dev
     ports:
-      - '3000:3000'
+      - "3000:3000"
     volumes:
       - /app/node_modules
-      # Ignore referencing the nodemodules because there is no node modules
+      # Ignore referencing the nodemodules because there is no node modules locally
       # Npm install will generate node modeules inside the docker linux
-      # so referencing it will delete the node_modules created by npm install inside the docker linux
+      # so referencing it from local will delete the node_modules created by npm install inside the docker linux
       - .:/app
       # reference everything inside . into /app present docker linux
   tests:
     stdin_open: true
     build:
       context: . # Check for docker file here
-      dockerfile: Dockerfile.dev # The name of the docker file 
+      dockerfile: Dockerfile.dev # The name of the docker file
     volumes:
       - /app/node_modules
       - .:/app
-    command: ['npm', 'run', 'test']
+    command: ["npm", "run", "test"]
