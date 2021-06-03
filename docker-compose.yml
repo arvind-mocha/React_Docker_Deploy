@@ -3,7 +3,7 @@ services:
   web:
     stdin_open: true
     environment:
-      - CHOKIDAR_USEPOLLING=true # Some times ghanges made to our code won't be reflected to our docker linux so us this to solve the problem
+      - CHOKIDAR_USEPOLLING=true # Some times changes made to our code won't be reflected to our docker linux so us this to solve the problem
     build:
       context: .
       dockerfile: Dockerfile.dev
