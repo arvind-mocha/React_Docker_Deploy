@@ -11,6 +11,7 @@ before_install:
 script:
   - docker run -e CI=true arvind/react_docker_deploy npm run test # -e CI= true is for stopping the process when the test ran since test wait for our input and never ends
 
+# Single Container Deployment
 deploy:
   provider: elasticbeanstalk # AWS SERVICE
   region: ap-south-1
